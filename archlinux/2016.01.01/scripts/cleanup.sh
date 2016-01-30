@@ -1,5 +1,5 @@
 #!/bin/bash
-PACMAN="$(which sudo | grep -v 'not found') $(which pacman) --quiet --noconfirm"
+PACMAN="$(which sudo | grep -v 'not found') $(which pacman) --noconfirm"
 
 test ! -d /var/lib/cloud || sudo rm -rf /var/lib/cloud/*
 sudo $PACMAN -Sc
