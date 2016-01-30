@@ -39,5 +39,11 @@
         "archlinux/2016.01.01/scripts/cleanup.sh"
       ]
     }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "boxes/archlinux-2016.01.01.box"
+    }
   ]
 }
