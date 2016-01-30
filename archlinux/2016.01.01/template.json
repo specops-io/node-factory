@@ -16,7 +16,7 @@
       "boot_wait": "5s",
       "boot_command": [
         "<enter><wait10><wait10>",
-        "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/packer/scripts/archlinux/install_arch_virtualbox_from_livecd.sh<enter><wait5>",
+        "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/scripts/install_arch_virtualbox_from_livecd.sh<enter><wait5>",
         "/usr/bin/bash ./install_arch_virtualbox_from_livecd.sh<enter>"
       ],
       "disk_size": 20480,
@@ -33,17 +33,11 @@
       "pause_before": "3s",
       "execute_command": "sh '{{.Path}}' {{user `vm_name`}}",
       "scripts": [
-        "archlinux/2016.01.01/scripts/base.sh",
-        "archlinux/2016.01.01/scripts/create_arch_user.sh",
-        "archlinux/2016.01.01/scripts/install_yaourt.sh",
-        "archlinux/2016.01.01/scripts/cleanup.sh"
+        "scripts/base.sh",
+        "scripts/create_arch_user.sh",
+        "scripts/install_yaourt.sh",
+        "scripts/cleanup.sh"
       ]
-    }
-  ],
-  "post-processors": [
-    {
-      "type": "vagrant",
-      "output": "boxes/archlinux-vagrant.box"
     }
   ]
 }
