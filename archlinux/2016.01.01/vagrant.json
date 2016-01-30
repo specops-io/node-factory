@@ -43,7 +43,16 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "boxes/archlinux-2016.01.01.box"
+      "keep_input_artifact": false
+    },
+    {
+      "type": "atlas",
+      "artifact": "specops-io/archlinux-2016.01.01",
+      "artifact_type": "vagrant.box",
+      "metadata": {
+        "provider": "virtualbox",
+        "description": "Arch Linux 2016.01.01"
+      }
     }
   ]
 }
