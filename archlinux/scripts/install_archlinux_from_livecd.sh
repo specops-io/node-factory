@@ -46,29 +46,29 @@ echo '==> generating the system configuration script'
 $SUDO /usr/bin/install --mode=0755 /dev/null "${TARGET_DIR}${CONFIG_SCRIPT}"
 
 $SUDO tee "${TARGET_DIR}${CONFIG_SCRIPT}" <<-EOF
-  echo '${FQDN}' > /etc/hostname
-  /usr/bin/ln -s /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
-  echo 'KEYMAP=${KEYMAP}' > /etc/vconsole.conf
-  /usr/bin/sed -i 's/#${LANGUAGE}/${LANGUAGE}/' /etc/locale.gen
-  /usr/bin/locale-gen
-  /usr/bin/mkinitcpio -p linux
-  # https://wiki.archlinux.org/index.php/Network_Configuration#Device_names
-  /usr/bin/ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
-  /usr/bin/ln -s '/usr/lib/systemd/system/dhcpcd@.service' '/etc/systemd/system/multi-user.target.wants/dhcpcd@eth0.service'
-  /usr/bin/sed -i 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
-  /usr/bin/systemctl enable sshd.service
+echo '${FQDN}' > /etc/hostname
+/usr/bin/ln -s /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
+echo 'KEYMAP=${KEYMAP}' > /etc/vconsole.conf
+/usr/bin/sed -i 's/#${LANGUAGE}/${LANGUAGE}/' /etc/locale.gen
+/usr/bin/locale-gen
+/usr/bin/mkinitcpio -p linux
+# https://wiki.archlinux.org/index.php/Network_Configuration#Device_names
+/usr/bin/ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
+/usr/bin/ln -s '/usr/lib/systemd/system/dhcpcd@.service' '/etc/systemd/system/multi-user.target.wants/dhcpcd@eth0.service'
+/usr/bin/sed -i 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
+/usr/bin/systemctl enable sshd.service
 
-  usr/bin/useradd -m -s /bin/bash vagrant
-  /usr/bin/echo -e "vagrant\nvagrant" | /usr/bin/passwd vagrant
+usr/bin/useradd -m -s /bin/bash vagrant
+/usr/bin/echo -e "vagrant\nvagrant" | /usr/bin/passwd vagrant
 
-  /usr/bin/tee /etc/sudoers.d/vagrant <<-EOS
-    Defaults env_keep += "SSH_AUTH_SOCK"
-    vagrant ALL=(ALL) NOPASSWD: ALL
-  EOS
+/usr/bin/tee /etc/sudoers.d/vagrant <<-EOS
+Defaults env_keep += "SSH_AUTH_SOCK"
+vagrant ALL=(ALL) NOPASSWD: ALL
+EOS
 
-  # clean up
-  /usr/bin/pacman -Rcns --noconfirm gptfdisk
-  /usr/bin/yes | /usr/bin/pacman -Scc
+# clean up
+/usr/bin/pacman -Rcns --noconfirm gptfdisk
+/usr/bin/yes | /usr/bin/pacman -Scc
 EOF
 
 echo '==> entering chroot and configuring system'
