@@ -35,10 +35,7 @@
       "scripts": [
         "archlinux/2016.01.01/scripts/base.sh",
         "archlinux/2016.01.01/scripts/install_sudo.sh",
-        "archlinux/2016.01.01/scripts/create_user.sh arch 'Archlinux Base User'",
-        "archlinux/2016.01.01/scripts/add_user_to_sudo_nopass.sh arch",
-        "archlinux/2016.01.01/scripts/create_user.sh vagrant 'Vagrant User'",
-        "archlinux/2016.01.01/scripts/add_user_to_sudo_nopass.sh vagrant",
+        "archlinux/2016.01.01/scripts/create_vagrant_users.sh",
         "archlinux/2016.01.01/scripts/install_yaourt.sh",
         "archlinux/2016.01.01/scripts/cleanup.sh"
       ]
