@@ -1,9 +1,5 @@
 #!/bin/bash
-SUDO="$(which sudo | grep -v 'not found')"
-
-$SUDO tee --append /etc/ssh/sshd_config << EOF
-PermitRootLogin yes
-EOF
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 echo "specops\nspecops" | passwd
 
