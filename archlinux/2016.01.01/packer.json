@@ -33,7 +33,14 @@
       "pause_before": "3s",
       "execute_command": "sh '{{.Path}}' {{user `vm_name`}}",
       "scripts": [
-        "archlinux/scripts/install_archlinux_from_livecd.sh",
+        "archlinux/scripts/install_archlinux_from_livecd.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "pause_before": "10s",
+      "execute_command": "sh '{{.Path}}' {{user `vm_name`}}",
+      "scripts": [
         "archlinux/scripts/base.sh",
         "archlinux/scripts/install_sudo.sh",
         "archlinux/scripts/create_vagrant_users.sh",
