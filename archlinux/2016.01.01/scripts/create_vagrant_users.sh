@@ -5,7 +5,7 @@ create_user() {
   username="$1"
   comment="$2"
   echo "creating user $username with comment $comment"
-  $SUDO useradd -m -s /bin/bash -c $comment $username
+  $SUDO useradd -m -s /bin/bash -c "$comment" "$username"
 }
 
 add_user_to_sudo_nopass() {
