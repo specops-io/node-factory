@@ -51,11 +51,11 @@
       },
       {
         "type": "atlas",
-        "artifact": "specops-io/archlinux-2016.01.01-ansible",
+        "artifact": "specops-io/archlinux-ansible",
         "artifact_type": "vagrant.box",
         "metadata": {
           "provider": "virtualbox",
-          "description": "Arch Linux 2016.01.01 with ansible"
+          "description": "Arch Linux with ansible"
         }
       }
     ]
