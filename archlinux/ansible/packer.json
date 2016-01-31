@@ -16,14 +16,14 @@
       "boot_wait": "5s",
       "boot_command": [
         "<enter><wait10><wait10>",
-        "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/archlinux/2016.01.01/scripts/enable_livecd_ssh.sh<enter><wait5>",
+        "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/archlinux/scripts/enable_livecd_ssh.sh<enter><wait5>",
         "/usr/bin/bash ./enable_livecd_ssh.sh<enter>"
       ],
       "disk_size": 20480,
       "hard_drive_interface": "sata",
       "ssh_timeout": "120s",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
+      "ssh_username": "root",
+      "ssh_password": "specops",
       "shutdown_command": "sudo systemctl start poweroff.timer"
     }
   ],
