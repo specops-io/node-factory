@@ -38,12 +38,14 @@ $SUDO /usr/bin/sed -i 's/sda3/sda1/' "${TARGET_DIR}/boot/syslinux/syslinux.cfg"
 $SUDO /usr/bin/sed -i 's/TIMEOUT 50/TIMEOUT 10/' "${TARGET_DIR}/boot/syslinux/syslinux.cfg"
 
 echo '==> generating the filesystem table'
-$SUDO /usr/bin/genfstab -p ${TARGET_DIR} >> "${TARGET_DIR}/etc/fstab"
+$SUDO tee --append "${TARGET_DIR}/etc/fstab" << EOF
+$(/usr/bin/genfstab -p ${TARGET_DIR})
+EOF
 
 echo '==> generating the system configuration script'
 $SUDO /usr/bin/install --mode=0755 /dev/null "${TARGET_DIR}${CONFIG_SCRIPT}"
 
-cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
+$SUDO tee "${TARGET_DIR}${CONFIG_SCRIPT}" <<-EOF
   echo '${FQDN}' > /etc/hostname
   /usr/bin/ln -s /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
   echo 'KEYMAP=${KEYMAP}' > /etc/vconsole.conf
@@ -67,7 +69,7 @@ $SUDO rm "${TARGET_DIR}${CONFIG_SCRIPT}"
 
 # http://comments.gmane.org/gmane.linux.arch.general/48739
 echo '==> adding workaround for shutdown race condition'
-cat << EOF > poweroff.timer
+$SUDO tee poweroff.timer << EOF
 [Unit]
 Description=Delayed poweroff
 
