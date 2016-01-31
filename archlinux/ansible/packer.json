@@ -33,13 +33,13 @@
       "pause_before": "3s",
       "execute_command": "sh '{{.Path}}' {{user `vm_name`}}",
       "scripts": [
-        "../../scripts/base.sh",
-        "../../scripts/install_sudo.sh",
-        "../../scripts/create_vagrant_users.sh",
-        "../../scripts/install_yaourt.sh",
-        "../../scripts/install_python.sh",
-        "../../scripts/install_ansible.sh",
-        "../../scripts/cleanup.sh"
+        "archlinux/scripts/base.sh",
+        "archlinux/scripts/install_sudo.sh",
+        "archlinux/scripts/create_vagrant_users.sh",
+        "archlinux/scripts/install_yaourt.sh",
+        "archlinux/scripts/install_python.sh",
+        "archlinux/scripts/install_ansible.sh",
+        "archlinux/scripts/cleanup.sh"
       ]
     }
   ],
