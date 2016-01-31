@@ -16,14 +16,14 @@
       "boot_wait": "5s",
       "boot_command": [
         "<enter><wait10><wait10>",
-        "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/archlinux/2016.01.01/scripts/install_arch_virtualbox_from_livecd.sh<enter><wait5>",
-        "/usr/bin/bash ./install_arch_virtualbox_from_livecd.sh<enter>"
+        "/usr/bin/curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/archlinux/2016.01.01/scripts/enable_livecd_ssh.sh<enter><wait5>",
+        "/usr/bin/bash ./enable_livecd_ssh.sh<enter>"
       ],
       "disk_size": 20480,
       "hard_drive_interface": "sata",
       "ssh_timeout": "900s",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
+      "ssh_username": "root",
+      "ssh_password": "specops",
       "shutdown_command": "sudo systemctl start poweroff.timer"
     }
   ],
@@ -33,6 +33,7 @@
       "pause_before": "3s",
       "execute_command": "sh '{{.Path}}' {{user `vm_name`}}",
       "scripts": [
+        "archlinux/scripts/install_arch_virtualbox_from_livecd.sh",
         "archlinux/scripts/base.sh",
         "archlinux/scripts/install_sudo.sh",
         "archlinux/scripts/create_vagrant_users.sh",

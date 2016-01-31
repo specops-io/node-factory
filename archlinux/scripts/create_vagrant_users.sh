@@ -12,8 +12,10 @@ add_user_to_sudo_nopass() {
   username="$1"
   echo "adding user $username to nopass sudo"
   $SUDO tee /etc/sudoers.d/$username << EOF
+Defaults env_keep += "SSH_AUTH_SOCK"
 $username ALL=(ALL) NOPASSWD: ALL
 EOF
+  chmod 0440 /etc/sudoers.d/$username
 }
 
 create_user arch 'Archlinux Base User'
