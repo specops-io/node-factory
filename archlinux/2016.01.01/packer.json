@@ -22,8 +22,8 @@
       "disk_size": 20480,
       "hard_drive_interface": "sata",
       "ssh_timeout": "120s",
-      "ssh_username": "root",
-      "ssh_password": "specops",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
       "shutdown_command": "sudo systemctl start poweroff.timer"
     }
   ],
@@ -40,12 +40,6 @@
       "type": "shell",
       "pause_before": "10s",
       "execute_command": "sh '{{.Path}}' {{user `vm_name`}}",
-      "override": {
-        "virtualbox-iso": {
-          "ssh_username": "vagrant",
-          "ssh_password": "vagrant"
-        }
-      },
       "scripts": [
         "archlinux/scripts/base.sh",
         "archlinux/scripts/install_sudo.sh",
