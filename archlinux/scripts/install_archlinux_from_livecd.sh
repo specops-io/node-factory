@@ -58,6 +58,14 @@ $SUDO tee "${TARGET_DIR}${CONFIG_SCRIPT}" <<-EOF
   /usr/bin/sed -i 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
   /usr/bin/systemctl enable sshd.service
 
+  usr/bin/useradd -m -s /bin/bash vagrant
+  /usr/bin/echo -e "vagrant\nvagrant" | /usr/bin/passwd vagrant
+
+  /usr/bin/tee /etc/sudoers.d/vagrant <<-EOS
+    Defaults env_keep += "SSH_AUTH_SOCK"
+    vagrant ALL=(ALL) NOPASSWD: ALL
+  EOS
+
   # clean up
   /usr/bin/pacman -Rcns --noconfirm gptfdisk
   /usr/bin/yes | /usr/bin/pacman -Scc
