@@ -21,7 +21,7 @@
       ],
       "disk_size": 20480,
       "hard_drive_interface": "sata",
-      "ssh_timeout": "900s",
+      "ssh_timeout": "120s",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "shutdown_command": "sudo systemctl start poweroff.timer"
