@@ -9,7 +9,7 @@ $SUDO usermod --password ${PASSWORD} --comment 'Vagrant User' --gid users --grou
 
 $SUDO tee /etc/sudoers.d/vagrant << EOF
 Defaults env_keep += "SSH_AUTH_SOCK"
-vagrant ALL=(ALL) NOPASSWD: ALL'
+vagrant ALL=(ALL) NOPASSWD: ALL
 EOF
 
 $SUDO chmod 0440 /etc/sudoers.d/vagrant
