@@ -5,7 +5,7 @@ create_user() {
   username="$1"
   comment="$2"
   echo "creating user $username with comment $comment"
-  $SUDO useradd -m -s /bin/bash -c "$comment" "$username"
+  $SUDO useradd -m --gid users --groups arch -s /bin/bash -c "$comment" "$username"
 }
 
 add_user_to_sudo_nopass() {
@@ -20,6 +20,3 @@ EOF
 
 create_user arch 'Archlinux Base User'
 add_user_to_sudo_nopass arch
-
-create_user vagrant 'Vagrant User'
-add_user_to_sudo_nopass vagrant

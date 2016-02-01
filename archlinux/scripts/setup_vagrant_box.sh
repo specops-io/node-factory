@@ -1,9 +1,9 @@
 #!/bin/bash
+# Vagrant-specific configuration
 SUDO="$(which sudo | grep -v 'not found')"
 PACMAN="${SUDO} $(which pacman) --quiet --noconfirm"
 PASSWORD=$(/usr/bin/openssl passwd -crypt 'vagrant')
 
-# Vagrant-specific configuration
 $SUDO groupadd vagrant
 $SUDO usermod --password ${PASSWORD} --comment 'Vagrant User' --gid users --groups vagrant,vboxsf vagrant
 

@@ -43,7 +43,7 @@
       "scripts": [
         "archlinux/scripts/base.sh",
         "archlinux/scripts/install_sudo.sh",
-        "archlinux/scripts/create_vagrant_users.sh",
+        "archlinux/scripts/create_arch_user.sh",
         "archlinux/scripts/install_virtualbox_guest.sh",
         "archlinux/scripts/setup_vagrant_box.sh",
         "archlinux/scripts/install_yaourt.sh",

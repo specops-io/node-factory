@@ -1,0 +1,16 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+current_dir = File.expand_path(File.dirname(__FILE__))
+
+unless Vagrant.has_plugin?("vagrant-serverspec")
+  puts "vagrant-serverspec plugin not found: install via `vagrant plugin install vagrant-serverspec`"
+  exit
+end
+
+Vagrant.configure(2) do |config|
+  config.vm.hostname = "archlinux-ansible.build.specops.io"
+  config.vm.box      = "specops-io/archlinux-ansible"
+  config.vm.provision :serverspec do |spec|
+    spec.pattern = 'serverspec.rb'
+  end
+end
